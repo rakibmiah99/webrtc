@@ -24,6 +24,7 @@
 
                 <div>
                     <video id="my-video"></video>
+                    <video id="remote-video"></video>
                 </div>
             </div>
 
@@ -124,6 +125,8 @@
                 })
 
 
+
+                //make call
                 document.getElementById('call-btn').addEventListener('click', function (){
                     let destination_peer_id = $('input').val()
                     navigator.mediaDevices.getUserMedia({
@@ -156,6 +159,11 @@
                             video.play()
                         }
                         call.answer(stream);
+                        call.on('stream', (remoteStream) => {
+                            let remote_video_el = document.getElementById('remote-video');
+                            remote_video_el.srcObject = remoteStream;
+                            remote_video_el.play();
+                        })
                     });
                 });
 
