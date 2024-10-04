@@ -149,7 +149,7 @@
 
                 //make call
                 call_btn.addEventListener('click', function (){
-                    let destination_peer_id = document.querySelector('input')
+                    let destination_peer_id = document.querySelector('input').value;
                     navigator.mediaDevices.getUserMedia({
                         audio: true,
                         video: true
